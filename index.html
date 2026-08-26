@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>애드모어 ADMORE – 퍼포먼스 마케팅 · 광고 대행</title>
+  <meta name="description" content="애드모어(ADMORE)는 크리에이티브 디렉팅부터 SNS 채널 운영, 메타·틱톡·구글·네이버 퍼포먼스 광고까지 원스톱으로 함께하는 광고 대행사입니다."/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;900&display=swap');
+
+    :root {
+      --navy:    #06235B;   /* 로고 네이비 */
+      --navy2:   #0A3A8F;
+      --blue:    #1D6BE5;
+      --blue2:   #3B87F5;
+      --sky:     #7DB4FF;
+      --bg:      #FFFFFF;
+      --bg2:     #F4F8FD;
+      --surface: #FFFFFF;
+      --border:  rgba(6,35,91,.10);
+      --border2: rgba(6,35,91,.18);
+      --text:    #0B1B33;
+      --muted:   #5A6B85;
+      --shadow:  0 2px 4px rgba(6,35,91,.04), 0 12px 32px rgba(6,35,91,.07);
+      --shadow-lg: 0 8px 16px rgba(6,35,91,.06), 0 24px 60px rgba(6,35,91,.13);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Noto Sans KR','Inter',sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 6vw, 5rem);
+      height: 72px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo img { height: 30px; display: block; }
+    .nav-links { display: flex; gap: clamp(1.2rem, 3vw, 2.5rem); list-style: none; }
+    .nav-links a { font-size: .9rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta { padding: .55rem 1.3rem; background: linear-gradient(135deg, var(--navy), var(--blue)); border: none; border-radius: 999px; color: #fff; font-size: .84rem; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 4px 16px rgba(29,107,229,.28); transition: transform .2s, box-shadow .2s; white-space: nowrap; }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(29,107,229,.4); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100svh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 9rem clamp(1.5rem,6vw,6rem) 5rem;
+      position: relative; overflow: hidden;
+      background: #fff;
+    }
+    .aurora {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 18% 12%, rgba(29,107,229,.16) 0%, transparent 62%),
+        radial-gradient(ellipse 60% 70% at 84% 6%,  rgba(125,180,255,.22) 0%, transparent 58%),
+        radial-gradient(ellipse 70% 50% at 50% 96%, rgba(6,35,91,.10)   0%, transparent 58%),
+        radial-gradient(ellipse 50% 40% at 92% 74%, rgba(59,135,245,.14) 0%, transparent 52%);
+      animation: aurora-shift 14s ease-in-out infinite alternate;
+    }
+    @keyframes aurora-shift { 0%{transform:scale(1)} 100%{transform:scale(1.08)} }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: linear-gradient(rgba(6,35,91,.055) 1px,transparent 1px), linear-gradient(90deg,rgba(6,35,91,.055) 1px,transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 15%, transparent 78%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 15%, transparent 78%);
+    }
+    .hero-inner { position: relative; z-index: 1; width: 100%; max-width: 880px; }
+
+    .hero-pill { display: inline-flex; align-items: center; gap: .5rem; padding: .4rem 1.05rem; border: 1px solid rgba(29,107,229,.28); border-radius: 999px; margin-bottom: 2rem; font-size: .78rem; font-weight: 700; letter-spacing: .08em; color: var(--blue); background: rgba(29,107,229,.07); }
+    .hero-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); animation: blink 1.8s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    .hero-logo { margin-bottom: 2.2rem; }
+    .hero-logo img { height: clamp(84px, 13vw, 132px); }
+
+    h1 { font-size: clamp(2rem, 5.5vw, 3.75rem); font-weight: 900; line-height: 1.18; letter-spacing: -.035em; margin-bottom: 1.5rem; word-break: keep-all; color: var(--navy); }
+    .grad-text { background: linear-gradient(120deg, var(--navy) 0%, var(--blue) 55%, var(--blue2) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-desc { font-size: clamp(.95rem, 2vw, 1.12rem); color: var(--muted); line-height: 1.9; max-width: 600px; margin: 0 auto 2.8rem; word-break: keep-all; }
+    .hero-btns { display: flex; gap: .85rem; flex-wrap: wrap; justify-content: center; }
+
+    .btn-primary { padding: .9rem 2.1rem; background: linear-gradient(135deg, var(--navy), var(--blue)); border: none; border-radius: 14px; color: #fff; font-size: .95rem; font-weight: 700; cursor: pointer; text-decoration: none; font-family: inherit; box-shadow: 0 8px 24px rgba(29,107,229,.3); transition: transform .2s, box-shadow .2s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(29,107,229,.42); }
+    .btn-outline { padding: .9rem 2.1rem; border: 1.5px solid var(--border2); border-radius: 14px; color: var(--navy); font-size: .95rem; font-weight: 700; background: #fff; cursor: pointer; text-decoration: none; transition: background .2s, border-color .2s, transform .2s; }
+    .btn-outline:hover { background: #F2F7FE; border-color: var(--blue); transform: translateY(-2px); }
+
+    /* ── STATS ── */
+    #stats { padding: 2.6rem clamp(1.5rem,6vw,5rem); background: linear-gradient(90deg,#F2F7FE,#EAF2FD,#F2F7FE); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stats-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.5rem 3.5rem; }
+    .stat { text-align: center; }
+    .stat-num { font-size: clamp(1.5rem,3vw,2.05rem); font-weight: 900; background: linear-gradient(120deg,var(--navy),var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -.02em; }
+    .stat-label { font-size: .78rem; color: var(--muted); margin-top: .3rem; letter-spacing: .04em; }
+    .stat-divider { width: 1px; height: 40px; background: var(--border2); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: clamp(4rem,8vw,7rem) clamp(1.5rem,6vw,5rem); }
+    .sec-label { font-size: .72rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; margin-bottom: .7rem; color: var(--blue); display: inline-block; }
+    .sec-title { font-size: clamp(1.6rem,3.5vw,2.5rem); font-weight: 800; line-height: 1.25; margin-bottom: .9rem; word-break: keep-all; color: var(--navy); letter-spacing: -.03em; }
+    .sec-desc { color: var(--muted); font-size: .95rem; line-height: 1.85; word-break: keep-all; }
+
+    /* ── SERVICES BENTO ── */
+    #services { background: var(--bg2); }
+    .services-head { text-align: center; margin-bottom: 3rem; }
+    .services-head .sec-desc { max-width: 520px; margin: 0 auto; }
+
+    .bento { display: grid; grid-template-columns: repeat(12,1fr); gap: 1rem; max-width: 1120px; margin: 0 auto; }
+    .bento-card { border-radius: 20px; padding: clamp(1.4rem,3vw,2rem); position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform .3s, box-shadow .3s, border-color .3s; }
+    .bento-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: rgba(29,107,229,.3); }
+    .bc-direct { grid-column: span 12; background: linear-gradient(135deg,#FFFFFF 0%,#EEF5FE 100%); border-color: rgba(29,107,229,.22); }
+    .bc-insta  { grid-column: span 4; }
+    .bc-tiktok { grid-column: span 4; }
+    .bc-youtube{ grid-column: span 4; }
+    .bc-meta   { grid-column: span 6; }
+    .bc-google { grid-column: span 3; }
+    .bc-naver  { grid-column: span 3; }
+
+    .bc-icon { width: 48px; height: 48px; border-radius: 13px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .bc-icon svg { width: 30px; height: 30px; }
+    .bc-icon.star { background: linear-gradient(135deg,var(--navy),var(--blue)); }
+    .bc-icon.ig   { background: linear-gradient(135deg,#833AB4,#E1306C,#FCAF45); }
+    .bc-icon.tt   { background: #010101; }
+    .bc-icon.yt   { background: #FF0000; }
+    .bc-icon.meta { background: #0866FF; }
+    .bc-icon.gg   { background: #F1F5FB; border: 1px solid var(--border); }
+    .bc-icon.nv   { background: #03C75A; }
+
+    .bento-card h3 { font-size: clamp(.95rem,1.5vw,1.1rem); font-weight: 800; margin-bottom: .5rem; color: var(--navy); }
+    .bento-card p  { font-size: .86rem; color: var(--muted); line-height: 1.75; word-break: keep-all; }
+    .bc-direct-inner { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
+    .bc-direct-body { flex: 1; min-width: 200px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .95rem; }
+    .tag { padding: .3rem .8rem; background: #EEF4FD; border: 1px solid rgba(29,107,229,.18); border-radius: 999px; font-size: .72rem; color: var(--navy2); font-weight: 700; }
+    .tag.pink { background: rgba(29,107,229,.1); border-color: rgba(29,107,229,.3); color: var(--blue); }
+
+    /* ── PLATFORMS ── */
+    #platforms { background: var(--bg); text-align: center; }
+    .platforms-head { margin-bottom: 2.5rem; }
+    .pill-row { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; max-width: 800px; margin: 0 auto; }
+    .ppill { display: flex; align-items: center; gap: .55rem; padding: .7rem 1.4rem; background: #fff; border: 1px solid var(--border2); border-radius: 999px; font-size: .88rem; font-weight: 700; color: var(--navy); transition: background .2s, border-color .2s, transform .2s, box-shadow .2s; cursor: default; }
+    .ppill:hover { background: #F4F8FD; border-color: var(--blue); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .ppill svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* ── PROCESS ── */
+    #process { background: var(--bg2); }
+    .process-head { text-align: center; margin-bottom: 3rem; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1rem; max-width: 960px; margin: 0 auto; }
+    .step-card { padding: 2rem 1.6rem; border-radius: 18px; background: #fff; border: 1px solid var(--border); text-align: center; box-shadow: var(--shadow); transition: border-color .3s, transform .3s; }
+    .step-card:hover { border-color: rgba(29,107,229,.35); transform: translateY(-4px); }
+    .step-num { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg,var(--navy),var(--blue)); display: flex; align-items: center; justify-content: center; font-size: .88rem; font-weight: 800; color: #fff; margin: 0 auto 1rem; box-shadow: 0 6px 16px rgba(29,107,229,.32); }
+    .step-card h4 { font-size: 1rem; font-weight: 800; margin-bottom: .5rem; color: var(--navy); }
+    .step-card p { font-size: .84rem; color: var(--muted); line-height: 1.7; word-break: keep-all; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); position: relative; overflow: hidden; }
+    .contact-aurora { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 70% 60% at 8% 50%,rgba(29,107,229,.12) 0%,transparent 60%), radial-gradient(ellipse 60% 50% at 92% 28%,rgba(125,180,255,.18) 0%,transparent 58%); }
+    .contact-wrap { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; text-align: center; }
+    #contact .sec-title { margin-bottom: .8rem; }
+    #contact .sec-desc { margin: 0 auto 2.5rem; max-width: 480px; }
+
+    .cform { display: flex; flex-direction: column; gap: .85rem; text-align: left; background: #fff; border: 1px solid var(--border); border-radius: 22px; padding: clamp(1.4rem,4vw,2.2rem); box-shadow: var(--shadow-lg); }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+    .fgroup { display: flex; flex-direction: column; gap: .4rem; }
+    .fgroup label { font-size: .78rem; font-weight: 700; color: var(--navy); letter-spacing: .02em; }
+    .fgroup input, .fgroup select, .fgroup textarea { background: #F8FAFD; border: 1px solid var(--border2); border-radius: 12px; padding: .85rem 1rem; color: var(--text); font-size: .9rem; font-family: inherit; outline: none; transition: border-color .2s, background .2s, box-shadow .2s; width: 100%; }
+    .fgroup input::placeholder, .fgroup textarea::placeholder { color: #9AA8BC; }
+    .fgroup input:focus, .fgroup select:focus, .fgroup textarea:focus { border-color: var(--blue); background: #fff; box-shadow: 0 0 0 3px rgba(29,107,229,.12); }
+    .fgroup select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%235A6B85' stroke-width='1.8' fill='none' stroke-linecap='round'/></svg>"); background-repeat: no-repeat; background-position: right 1rem center; }
+    .fgroup textarea { resize: vertical; min-height: 110px; }
+
+    .btn-submit { width: 100%; padding: 1rem; background: linear-gradient(135deg,var(--navy),var(--blue)); border: none; border-radius: 12px; color: #fff; font-size: 1rem; font-weight: 800; cursor: pointer; font-family: inherit; box-shadow: 0 8px 22px rgba(29,107,229,.32); transition: transform .2s, box-shadow .2s; margin-top: .25rem; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(29,107,229,.45); }
+    .form-note { font-size: .74rem; color: #93A1B5; text-align: center; margin-top: .5rem; }
+
+    /* ── FOOTER ── */
+    footer { padding: 3rem clamp(1.5rem,6vw,5rem) 2.2rem; border-top: 1px solid var(--border); background: #F7FAFD; }
+    .foot-top { display: flex; flex-wrap: wrap; gap: 2rem 3rem; align-items: flex-start; justify-content: space-between; max-width: 1120px; margin: 0 auto 1.8rem; }
+    .foot-logo img { height: 34px; display: block; margin-bottom: .9rem; }
+    .foot-tagline { font-size: .82rem; color: var(--muted); line-height: 1.7; word-break: keep-all; max-width: 300px; }
+    .biz { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: .45rem 2.5rem; font-size: .8rem; color: var(--muted); line-height: 1.75; }
+    .biz b { color: var(--navy); font-weight: 700; margin-right: .45rem; }
+    .foot-bottom { max-width: 1120px; margin: 0 auto; padding-top: 1.4rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: center; justify-content: space-between; }
+    .foot-bottom p { font-size: .76rem; color: #93A1B5; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .bc-insta, .bc-tiktok, .bc-youtube { grid-column: span 6; }
+      .bc-meta { grid-column: span 6; }
+      .bc-google { grid-column: span 6; }
+      .bc-naver { grid-column: span 6; }
+      .stat-divider { display: none; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-links a { display: block; padding: .75rem 0; border-bottom: 1px solid rgba(6,35,91,.06); font-size: .95rem; }
+      .nav-hamburger { display: flex; }
+      .bc-insta, .bc-tiktok, .bc-youtube, .bc-meta, .bc-google, .bc-naver { grid-column: span 12; }
+      .frow { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -.02em; }
+      .bc-direct-inner { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero"><img src="assets/admore-h.png" alt="ADMORE 애드모어"/></a>
+  <ul class="nav-links">
+    <li><a href="#services">서비스</a></li>
+    <li><a href="#platforms">플랫폼</a></li>
+    <li><a href="#process">프로세스</a></li>
+    <li><a href="#contact">문의</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">무료 상담 →</a>
+  <div class="nav-hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="aurora"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-pill"><span class="dot"></span>퍼포먼스 마케팅 · 광고 대행</div>
+    <div class="hero-logo">
+      <img src="assets/admore-stack.png" alt="ADMORE 애드모어"/>
+    </div>
+    <h1>광고, 그 이상의<br/><span class="grad-text">브랜드 성장을 만듭니다</span></h1>
+    <p class="hero-desc">크리에이티브 디렉팅부터 인스타그램·틱톡·유튜브 채널 운영,<br/>메타·틱톡·구글·네이버 퍼포먼스 광고까지<br/>애드모어가 원스톱으로 함께합니다.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">무료 상담 신청하기</a>
+      <a href="#services" class="btn-outline">서비스 살펴보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">크리에이티브</div><div class="stat-label">디렉팅 전문</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-num">SNS 3채널</div><div class="stat-label">인스타·틱톡·유튜브</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-num">광고 4플랫폼</div><div class="stat-label">메타·틱톡·구글·네이버</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-num">All-in-One</div><div class="stat-label">원스톱 마케팅</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-head">
+    <div class="sec-label">Services</div>
+    <h2 class="sec-title">애드모어의 핵심 서비스</h2>
+    <p class="sec-desc">기획·제작·광고까지, 디지털 마케팅 전 영역을 커버합니다.</p>
+  </div>
+  <div class="bento">
+
+    <!-- 크리에이티브 디렉팅 -->
+    <div class="bento-card bc-direct">
+      <div class="bc-direct-inner">
+        <div class="bc-icon star">
+          <svg viewBox="0 0 30 30" fill="none">
+            <rect x="2" y="8" width="26" height="18" rx="3" stroke="white" stroke-width="2" fill="none"/>
+            <rect x="2" y="8" width="26" height="5" rx="1" fill="white" fill-opacity=".18"/>
+            <line x1="8" y1="8" x2="6" y2="3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <line x1="15" y1="8" x2="13" y2="3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <line x1="22" y1="8" x2="20" y2="3" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="15" cy="19" r="4" stroke="white" stroke-width="1.8" fill="none"/>
+            <polygon points="13.5,17 13.5,21 18,19" fill="white"/>
+          </svg>
+        </div>
+        <div class="bc-direct-body">
+          <h3 style="font-size:1.25rem;margin-bottom:.6rem;">크리에이티브 디렉팅</h3>
+          <p>글로벌 트렌드와 레퍼런스를 분석해 브랜드 고유의 비주얼 언어로 재해석합니다.<br/>단순 콘텐츠 제작을 넘어, 브랜드 세계관과 방향성 자체를 설계하고 디렉팅합니다.</p>
+          <div class="tag-list">
+            <span class="tag pink">트렌드 리서치</span>
+            <span class="tag pink">레퍼런스 큐레이션</span>
+            <span class="tag pink">비주얼 디렉팅</span>
+            <span class="tag pink">브랜드 톤앤매너</span>
+            <span class="tag pink">세계관 설계</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instagram -->
+    <div class="bento-card bc-insta">
+      <div class="bc-icon ig">
+        <svg viewBox="0 0 30 30" fill="none">
+          <rect x="3" y="3" width="24" height="24" rx="7" stroke="white" stroke-width="2" fill="none"/>
+          <circle cx="15" cy="15" r="5.5" stroke="white" stroke-width="2" fill="none"/>
+          <circle cx="22" cy="8" r="1.5" fill="white"/>
+        </svg>
+      </div>
+      <h3>인스타그램 운영</h3>
+      <p>피드 기획, 릴스 제작, 해시태그 전략으로 팔로워와 브랜드 인지도를 동시에 성장시킵니다.</p>
+      <div class="tag-list"><span class="tag">피드 기획</span><span class="tag">릴스</span><span class="tag">커뮤니티</span></div>
+    </div>
+
+    <!-- TikTok -->
+    <div class="bento-card bc-tiktok">
+      <div class="bc-icon tt">
+        <svg viewBox="0 0 30 30" fill="none">
+          <path d="M20 5c-.7-.9-1.2-2-1.2-3.2H15.5V14c0 1.3-1 2.4-2.4 2.4s-2.4-1.1-2.4-2.4 1-2.4 2.4-2.4c.2 0 .4 0 .6.1V8.4c-.2 0-.4-.1-.6-.1-2.8 0-5 2.3-5 5s2.2 5 5 5 5-2.3 5-5V8.9c1 .7 2.2 1.2 3.5 1.2V7c-.8 0-1.6-.3-2.3-1z" fill="white"/>
+          <path d="M20 5c.7.7 1.5 1 2.3 1v3c-1.3 0-2.5-.5-3.5-1.2v5.1c0 2.7-2.2 5-5 5s-5-2.3-5-5 2.2-5 5-5c.2 0 .4 0 .6.1v3.3c-.2-.1-.4-.1-.6-.1-1.3 0-2.4 1.1-2.4 2.4s1.1 2.4 2.4 2.4 2.4-1.1 2.4-2.4V1.8H18.8c0 1.2.5 2.3 1.2 3.2z" fill="#69C9D0"/>
+        </svg>
+      </div>
+      <h3>틱톡 운영</h3>
+      <p>트렌디한 숏폼으로 빠른 바이럴을 만들어냅니다. 알고리즘 분석 기반의 최적 전략을 적용합니다.</p>
+      <div class="tag-list"><span class="tag">숏폼</span><span class="tag">바이럴</span><span class="tag">트렌드</span></div>
+    </div>
+
+    <!-- YouTube -->
+    <div class="bento-card bc-youtube">
+      <div class="bc-icon yt">
+        <svg viewBox="0 0 30 30" fill="none">
+          <path d="M24 9a2.5 2.5 0 0 0-1.75-1.75C20.5 6.9 15 6.9 15 6.9s-5.5 0-7.25.35A2.5 2.5 0 0 0 6 9C5.65 10.75 5.65 15 5.65 15s0 4.25.35 6a2.5 2.5 0 0 0 1.75 1.75c1.75.35 7.25.35 7.25.35s5.5 0 7.25-.35A2.5 2.5 0 0 0 24 21c.35-1.75.35-6 .35-6s0-4.25-.35-6z" fill="white"/>
+          <polygon points="13,12 13,18 18,15" fill="#FF0000"/>
+        </svg>
+      </div>
+      <h3>유튜브 운영</h3>
+      <p>채널 기획, SEO 최적화, 썸네일 전략까지 구독자가 꾸준히 성장하는 채널을 만들어 드립니다.</p>
+      <div class="tag-list"><span class="tag">채널 전략</span><span class="tag">SEO</span><span class="tag">썸네일</span></div>
+    </div>
+
+    <!-- Meta -->
+    <div class="bento-card bc-meta">
+      <div class="bc-icon meta">
+        <svg viewBox="0 0 30 30" fill="none">
+          <path d="M2.5 15.5c0 4.7 3.4 8.6 7.8 9.5V18.4H7.6v-2.9H10.3v-1.9c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.6.7-1.6 1.5v1.6h2.7l-.4 2.9h-2.3V25c4.4-.9 7.8-4.8 7.8-9.5C21 9.7 17.5 5 13 5S2.5 9.7 2.5 15.5z" fill="white"/>
+        </svg>
+      </div>
+      <h3>메타 광고 (Facebook · Instagram)</h3>
+      <p>정밀 타겟팅으로 페이스북·인스타그램 광고를 집행하고, 최적의 ROAS를 목표로 지속 최적화합니다.</p>
+      <div class="tag-list"><span class="tag">Meta Ads</span><span class="tag">타겟팅</span><span class="tag">리타게팅</span><span class="tag">ROAS 최적화</span></div>
+    </div>
+
+    <!-- Google -->
+    <div class="bento-card bc-google">
+      <div class="bc-icon gg">
+        <svg viewBox="0 0 30 30" fill="none">
+          <path d="M27 15.3c0-.9-.1-1.7-.2-2.5H15v4.8h6.8c-.3 1.5-1.2 2.8-2.5 3.7v3h4c2.3-2.1 3.7-5.3 3.7-9z" fill="#4285F4"/>
+          <path d="M15 27c3.4 0 6.2-1.1 8.3-3l-4-3.1c-1.1.7-2.5 1.2-4.3 1.2-3.3 0-6.1-2.2-7.1-5.2H3.8v3.2C5.9 24.3 10.1 27 15 27z" fill="#34A853"/>
+          <path d="M7.9 16.9c-.3-.8-.4-1.7-.4-2.6s.1-1.8.4-2.6V8.5H3.8C2.7 10.6 2 13 2 15.5s.7 4.9 1.8 7l4.1-3.2z" fill="#FBBC05"/>
+          <path d="M15 6.4c1.9 0 3.6.7 5 2l3.7-3.7C21.5 2.4 18.5 1 15 1 10.1 1 5.9 3.7 3.8 7.9l4.1 3.2C8.9 8.6 11.7 6.4 15 6.4z" fill="#EA4335"/>
+        </svg>
+      </div>
+      <h3>구글 광고</h3>
+      <p>검색·디스플레이·유튜브 광고 전 영역을 운영합니다.</p>
+      <div class="tag-list"><span class="tag">Google Ads</span><span class="tag">GDN</span></div>
+    </div>
+
+    <!-- Naver -->
+    <div class="bento-card bc-naver">
+      <div class="bc-icon nv">
+        <svg viewBox="0 0 30 30" fill="none">
+          <path d="M16.8 15.3l-4.4-6.8H7.5v13.5h5V15.3l4.4 6.7H21.5V8.5h-4.7z" fill="white"/>
+        </svg>
+      </div>
+      <h3>네이버 광고</h3>
+      <p>검색광고, GFA, 브랜드검색 등 국내 최대 플랫폼 전문 운영합니다.</p>
+      <div class="tag-list"><span class="tag">검색광고</span><span class="tag">GFA</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section id="platforms">
+  <div class="platforms-head">
+    <div class="sec-label">Platforms</div>
+    <h2 class="sec-title">운영 플랫폼</h2>
+    <p class="sec-desc">국내외 주요 디지털 플랫폼 전반을 커버합니다.</p>
+  </div>
+  <div class="pill-row">
+    <div class="ppill"><svg viewBox="0 0 24 24" fill="none"><defs><radialGradient id="ig1" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#ffd600"/><stop offset="50%" stop-color="#ff0100"/><stop offset="100%" stop-color="#d800b9"/></radialGradient></defs><rect width="24" height="24" rx="6" fill="url(#ig1)"/><rect x="4" y="4" width="16" height="16" rx="4.5" stroke="white" stroke-width="1.5" fill="none"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5" fill="none"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>Instagram</div>
+    <div class="ppill"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#010101"/><path d="M16.5 7.25c-.6-.7-.95-1.6-.95-2.6h-2.15v10.2c0 1.1-.85 1.95-1.9 1.95s-1.9-.85-1.9-1.95.85-1.95 1.9-1.95c.2 0 .35.05.5.1V10.8c-.15 0-.35-.05-.5-.05-2.25 0-4.05 1.85-4.05 4.1s1.8 4.1 4.05 4.1S15.5 17.1 15.5 14.85V9.5c.8.6 1.75.95 2.8.95v-2.15c-.65 0-1.3-.25-1.8-1.05z" fill="white"/><path d="M16.5 7.25c.5.8 1.15 1.05 1.8 1.05v2.15c-1.05 0-2-.35-2.8-.95v5.35c0 2.25-1.8 4.1-4.05 4.1s-4.05-1.85-4.05-4.1 1.8-4.1 4.05-4.1c.15 0 .35 0 .5.05v2.2c-.15-.05-.3-.1-.5-.1-1.05 0-1.9.85-1.9 1.95s.85 1.95 1.9 1.95 1.9-.85 1.9-1.95V4.65h2.15c0 1 .35 1.9.95 2.6z" fill="#69C9D0"/></svg>TikTok</div>
+    <div class="ppill"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#FF0000"/><path d="M19.25 8.75a2 2 0 0 0-1.4-1.4C16.75 7 12 7 12 7s-4.75 0-5.85.35a2 2 0 0 0-1.4 1.4C4.4 9.85 4.4 12 4.4 12s0 2.15.35 3.25a2 2 0 0 0 1.4 1.4C7.25 17 12 17 12 17s4.75 0 5.85-.35a2 2 0 0 0 1.4-1.4c.35-1.1.35-3.25.35-3.25s0-2.15-.35-3.25z" fill="white"/><polygon points="10.5,10 10.5,14 14,12" fill="#FF0000"/></svg>YouTube</div>
+    <div class="ppill"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#0866FF"/><path d="M4 12.75c0 3.75 2.7 6.9 6.25 7.6V14.75H8.35v-2h1.9v-1.5c0-1.9 1.15-2.95 2.85-2.95.85 0 1.7.15 1.7.15v1.85h-.95c-.95 0-1.25.6-1.25 1.2v1.25h2.1l-.35 2h-1.75v5.6C16.3 19.65 19 16.5 19 12.75 19 8.2 15.86 5 12 5S4 8.2 4 12.75z" fill="white"/></svg>Facebook</div>
+    <div class="ppill"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#F1F5FB" stroke="rgba(6,35,91,.1)"/><path d="M21.8 12.25c0-.7-.05-1.4-.2-2.05H12v3.9h5.5c-.25 1.25-.95 2.3-2 3v2h2.9c1.7-1.6 2.7-3.95 2.7-6.35z" fill="#4285F4"/><path d="M12 22c2.7 0 5-.9 6.65-2.4l-2.9-2c-.9.6-2.05.95-3.75.95-2.9 0-5.35-1.95-6.25-4.55H2.7v2.05C4.45 19.55 8 22 12 22z" fill="#34A853"/><path d="M5.75 14c-.25-.7-.35-1.4-.35-2.1s.1-1.45.35-2.1V7.75H2.7C1.95 9.3 1.5 11.1 1.5 13s.45 3.7 1.2 5.25l3.05-2.25z" fill="#FBBC05"/><path d="M12 5.35c1.6 0 3.05.55 4.2 1.65l2.8-2.8C17 2.4 14.7 1.5 12 1.5 8 1.5 4.45 3.95 2.7 7.5l3.05 2.3C6.65 7.3 9.1 5.35 12 5.35z" fill="#EA4335"/></svg>Google</div>
+    <div class="ppill"><svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#03C75A"/><path d="M13.65 12.25L10.15 6.5H6.5v11h3.85V12.25L13.85 18H17.5V7H13.65z" fill="white"/></svg>Naver</div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-head">
+    <div class="sec-label">Process</div>
+    <h2 class="sec-title">애드모어의 작업 방식</h2>
+    <p class="sec-desc">데이터 기반 프로세스로 측정 가능한 성과를 만들어냅니다.</p>
+  </div>
+  <div class="steps">
+    <div class="step-card"><div class="step-num">1</div><h4>브랜드 분석</h4><p>브랜드와 타겟 고객을 깊이 이해하고 경쟁 환경을 분석합니다.</p></div>
+    <div class="step-card"><div class="step-num">2</div><h4>전략 수립</h4><p>플랫폼별 최적화된 콘텐츠 전략과 광고 캠페인 플랜을 수립합니다.</p></div>
+    <div class="step-card"><div class="step-num">3</div><h4>제작 &amp; 운영</h4><p>고품질 콘텐츠를 제작하고 광고를 집행합니다.</p></div>
+    <div class="step-card"><div class="step-num">4</div><h4>성과 분석</h4><p>데이터를 분석하고 지속 개선하여 성과를 극대화합니다.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-aurora"></div>
+  <div class="contact-wrap">
+    <div class="sec-label">Contact</div>
+    <h2 class="sec-title">지금 바로 시작하세요</h2>
+    <p class="sec-desc">무료 상담을 통해 브랜드에 꼭 맞는 맞춤 전략을 제안해 드립니다.</p>
+    <form class="cform" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSubmit(event)">
+      <!-- TODO: web3forms.com 에서 애드모어 계정으로 발급받은 access_key 로 교체 -->
+      <input type="hidden" name="access_key" value="YOUR-WEB3FORMS-ACCESS-KEY"/>
+      <input type="hidden" name="subject" value="[애드모어] 새 상담 문의가 도착했습니다"/>
+      <input type="hidden" name="from_name" value="애드모어 홈페이지"/>
+      <input type="hidden" name="redirect" value="false"/>
+      <div class="frow">
+        <div class="fgroup"><label>성함 *</label><input type="text" name="name" placeholder="홍길동" required/></div>
+        <div class="fgroup"><label>연락처 *</label><input type="tel" name="phone" placeholder="010-0000-0000" required/></div>
+      </div>
+      <div class="frow">
+        <div class="fgroup"><label>회사명 / 브랜드명</label><input type="text" name="company" placeholder="브랜드명을 입력해주세요"/></div>
+        <div class="fgroup">
+          <label>문의 서비스 *</label>
+          <select name="service" required>
+            <option value="" disabled selected>서비스를 선택해주세요</option>
+            <option>크리에이티브 디렉팅</option>
+            <option>인스타그램 계정 운영</option>
+            <option>틱톡 계정 운영</option>
+            <option>유튜브 채널 운영</option>
+            <option>메타 광고</option>
+            <option>구글 광고</option>
+            <option>네이버 광고</option>
+            <option>통합 마케팅 패키지</option>
+          </select>
+        </div>
+      </div>
+      <div class="fgroup"><label>문의 내용 *</label><textarea name="message" placeholder="궁금한 점이나 요청 사항을 자유롭게 적어주세요." required></textarea></div>
+      <button type="submit" class="btn-submit">상담 신청하기 →</button>
+      <p class="form-note">입력하신 정보는 상담 목적으로만 사용됩니다.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top">
+    <div class="foot-logo">
+      <img src="assets/admore-h.png" alt="ADMORE 애드모어"/>
+      <p class="foot-tagline">광고, 그 이상의 브랜드 성장.<br/>애드모어는 기획·제작·광고를 아우르는 광고 대행사입니다.</p>
+    </div>
+    <div class="biz">
+      <div><b>상호</b>애드모어 (ADMORE)</div>
+      <div><b>대표</b>지수남</div>
+      <div><b>사업자등록번호</b>438-09-02768</div>
+      <div><b>업태</b>전문, 과학 및 기술서비스업</div>
+      <div><b>종목</b>광고 대행업</div>
+      <div><b>주소</b>경기도 광주시 중앙로 95-3, 6층 602호(역동)</div>
+      <!-- TODO: 대표번호 / 이메일 확정되면 아래 두 줄 채우기
+      <div><b>대표번호</b>000-0000-0000</div>
+      <div><b>이메일</b>contact@admore.co.kr</div>
+      -->
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2026 ADMORE. All rights reserved.</p>
+    <p>미디어 콘텐츠 창작 &amp; 광고대행</p>
+  </div>
+</footer>
+
+<script>
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.btn-submit');
+    const data = new FormData(form);
+    btn.textContent = '전송 중...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+      const json = await res.json();
+      if (json.success) {
+        btn.textContent = '✓ 상담 신청이 완료되었습니다!';
+        btn.style.background = 'linear-gradient(135deg,#059669,#10b981)';
+        form.reset();
+        setTimeout(() => { btn.textContent = '상담 신청하기 →'; btn.style.background = ''; btn.disabled = false; }, 4000);
+      } else { throw new Error(); }
+    } catch {
+      btn.textContent = '⚠ 오류가 발생했습니다. 다시 시도해주세요.';
+      btn.style.background = 'linear-gradient(135deg,#dc2626,#ef4444)';
+      setTimeout(() => { btn.textContent = '상담 신청하기 →'; btn.style.background = ''; btn.disabled = false; }, 3000);
+    }
+  }
+
+  // 모바일 햄버거 → 간단 토글
+  document.querySelector('.nav-hamburger').addEventListener('click', () => {
+    const ul = document.querySelector('.nav-links');
+    const open = ul.style.display === 'flex';
+    Object.assign(ul.style, open ? { display: 'none' } : {
+      display: 'flex', position: 'absolute', top: '72px', left: 0, right: 0,
+      flexDirection: 'column', gap: '0', background: '#fff',
+      borderBottom: '1px solid rgba(6,35,91,.1)', padding: '.5rem 1.5rem 1rem'
+    });
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    if (window.innerWidth <= 640) document.querySelector('.nav-links').style.display = 'none';
+  }));
+</script>
+
+</body>
+</html>
